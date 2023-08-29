@@ -8,6 +8,7 @@ public class CrousGoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrousGoApplication.class, args);
+		System.out.println("CrousGo Application Started");
 	}
 
 }
