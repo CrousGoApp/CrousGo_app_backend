@@ -10,6 +10,7 @@ public class CrousGoApplication {
 		SpringApplication.run(CrousGoApplication.class, args);
 		//dire bonjour
 		System.out.println("Bonjour");
+		
 	}
 
 }
