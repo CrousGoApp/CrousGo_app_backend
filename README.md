@@ -26,7 +26,7 @@ Le but de ce projet est de créer une application cross-plateforme pour commande
 
 **1. Clonez le dépôt**
 <pre>
-git clone [lien vers le dépôt backend]
+git clone git@github.com:wardrockay/CrousGo_app_backend.git
 </pre>
 
 **2. Installer les dépendances**
