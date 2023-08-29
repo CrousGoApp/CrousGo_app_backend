@@ -9,15 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Path("allergen")
+@Path("dish")
 public class DishResource {
 
     @Autowired
-    private DishRepository allergenRepository;
+    private DishRepository dishRepository;
 
     @GET
     @Produces(value = "application/json")
     public List<Dish> getDish() {
-        return allergenRepository.findAll();
+        return dishRepository.findAll();
     }
 }
