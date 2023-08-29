@@ -38,7 +38,7 @@ mvn clean install
 ## Auteurs
 
 Téo VANDROEMME  
-Louis Mercier  
+Louis MERCIER  
 Etienne MAILLOT
 
 ## Liens utiles
