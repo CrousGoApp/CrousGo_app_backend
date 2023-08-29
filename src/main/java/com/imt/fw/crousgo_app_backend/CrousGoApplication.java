@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.imt.fw.crousgo_app_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,9 +8,6 @@ public class CrousGoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrousGoApplication.class, args);
-		//dire bonjour
-		System.out.println("Bonjour");
-		
 	}
 
 }

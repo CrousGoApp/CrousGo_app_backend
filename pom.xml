@@ -8,11 +8,11 @@
 		<version>3.1.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.imt.fw</groupId>
+	<artifactId>crousgo_app_backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CrousGO</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Projet Web livraison de repas</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
