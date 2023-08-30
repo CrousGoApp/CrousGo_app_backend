@@ -11,11 +11,12 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
+        register(UserResource.class);
         register(AllergenResource.class);
         register(CategorieResource.class);
         register(ClassroomResource.class);
         register(DishResource.class);
         register(OrderResource.class);
-        register(UserResource.class);
+
     }
 }

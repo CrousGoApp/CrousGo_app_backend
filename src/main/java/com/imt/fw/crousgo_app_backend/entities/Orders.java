@@ -5,15 +5,15 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "user")
-    private Long user;
+    @Column(name = "users_id")
+    private Long users_id;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(
             name = "order_dish",
             joinColumns = @JoinColumn(name = "order_id"),
@@ -28,12 +28,12 @@ public class Order {
         return id;
     }
 
-    public Long getUser() {
-        return user;
+    public Long getusers_id() {
+        return users_id;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setusers_id(Long users_id) {
+        this.users_id = users_id;
     }
 
     public List<Dish> getDish() {

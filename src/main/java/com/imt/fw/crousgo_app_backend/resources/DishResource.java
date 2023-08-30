@@ -1,6 +1,5 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
-import com.imt.fw.crousgo_app_backend.entities.Allergen;
 import com.imt.fw.crousgo_app_backend.entities.Dish;
 import com.imt.fw.crousgo_app_backend.repositories.DishRepository;
 import jakarta.validation.constraints.NotNull;
