@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Path("order")
+@Path("orders")
 public class OrderResource {
 
     @Autowired

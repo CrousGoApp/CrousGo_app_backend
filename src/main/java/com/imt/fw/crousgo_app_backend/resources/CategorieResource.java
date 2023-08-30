@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Path("categorie")
+@Path("categories")
 public class CategorieResource {
 
     @Autowired

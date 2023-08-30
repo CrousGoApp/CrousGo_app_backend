@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Path("user")
+@Path("users")
 public class UserResource {
 
     @Autowired

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Path("dish")
+@Path("dishes")
 public class DishResource {
 
     @Autowired
