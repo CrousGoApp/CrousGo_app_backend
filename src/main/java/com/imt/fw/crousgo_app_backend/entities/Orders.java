@@ -10,7 +10,12 @@ public class Orders {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "users_id")
+    @OneToOne
+    @JoinTable(
+            name = "order_user",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private Long users_id;
 
     @OneToMany
