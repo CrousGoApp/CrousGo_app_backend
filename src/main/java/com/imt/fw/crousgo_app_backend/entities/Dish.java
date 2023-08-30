@@ -16,7 +16,7 @@ public class Dish {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(
             name = "dish_allergen",
             joinColumns = @JoinColumn(name = "dish_id"),
@@ -24,7 +24,7 @@ public class Dish {
     )
     private List<Allergen> allergens;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(
             name = "dish_categorie",
             joinColumns = @JoinColumn(name = "dish_id"),

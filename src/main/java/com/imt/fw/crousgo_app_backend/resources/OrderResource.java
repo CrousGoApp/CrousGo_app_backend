@@ -1,6 +1,6 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
-import com.imt.fw.crousgo_app_backend.entities.Order;
+import com.imt.fw.crousgo_app_backend.entities.Orders;
 import com.imt.fw.crousgo_app_backend.repositories.OrderRepository;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -17,7 +17,7 @@ public class OrderResource {
 
     @GET
     @Produces(value = "application/json")
-    public List<Order> getOrder() {
+    public List<Orders> getOrder() {
         return orderRepository.findAll();
     }
 }

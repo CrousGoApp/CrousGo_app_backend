@@ -1,6 +1,6 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
-import com.imt.fw.crousgo_app_backend.entities.User;
+import com.imt.fw.crousgo_app_backend.entities.Users;
 import com.imt.fw.crousgo_app_backend.repositories.UserRepository;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -17,7 +17,7 @@ public class UserResource {
 
     @GET
     @Produces(value = "application/json")
-    public List<User> getUser() {
+    public List<Users> getUser() {
         return userRepository.findAll();
     }
 }
