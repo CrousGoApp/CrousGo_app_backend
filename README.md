@@ -34,6 +34,19 @@ git clone git@github.com:wardrockay/CrousGo_app_backend.git
 mvn clean install
 </pre>
 
+**3. Installation des données de test**  
+Pour installer les données de test dans la base de données H2 embarquée, suivez les étapes ci-dessous :
+
+Ouvrez le fichier `data.sql` situé dans le répertoire `src/main/resources`.
+
+1. Accédez à la console H2 via votre navigateur web en allant à `http://localhost:8080/h2`  
+2. Connectez-vous à la base de données en utilisant les informations de connexion appropriées.  
+3. Ouvrez le fichier `data.sql` situé dans le répertoire `src/main/resources`.  
+4. Copiez les requêtes SQL du fichier `data.sql`.  
+5. Collez les requêtes SQL copiées dans la console H2.  
+6. Appuyez sur le bouton "Run" pour initialiser les données de test dans la base de données.
+
+Après avoir appuyé sur "Run", les données de test seront insérées dans la base de données H2.
 
 ## Auteurs
 

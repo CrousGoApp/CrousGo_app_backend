@@ -7,8 +7,8 @@ import java.util.List;
 @Entity
 public class Dish {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -35,7 +35,7 @@ public class Dish {
     @Column(name = "picture")
     private String picture;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

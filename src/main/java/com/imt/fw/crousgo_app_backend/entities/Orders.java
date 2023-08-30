@@ -7,8 +7,8 @@ import java.util.List;
 @Entity
 public class Orders {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @OneToOne
     @JoinTable(
@@ -29,7 +29,7 @@ public class Orders {
     @Column(name = "classroom")
     private Long classroom;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
