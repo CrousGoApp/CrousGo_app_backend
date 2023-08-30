@@ -7,8 +7,8 @@ import java.util.List;
 @Entity
 public class Orders {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(name = "users_id")
     private Long users_id;
@@ -24,7 +24,7 @@ public class Orders {
     @Column(name = "classroom")
     private Long classroom;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

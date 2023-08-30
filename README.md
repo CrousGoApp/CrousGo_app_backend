@@ -48,10 +48,6 @@ Ouvrez le fichier `data.sql` situé dans le répertoire `src/main/resources`.
 
 Après avoir appuyé sur "Run", les données de test seront insérées dans la base de données H2.
 
-
-
-
-
 ## Auteurs
 
 Téo VANDROEMME  
