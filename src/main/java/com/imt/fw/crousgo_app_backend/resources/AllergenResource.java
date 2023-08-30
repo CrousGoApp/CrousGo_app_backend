@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Path("allergen")
+@Path("allergens")
 public class AllergenResource {
 
     @Autowired
