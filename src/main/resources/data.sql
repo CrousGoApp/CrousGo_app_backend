@@ -9,7 +9,6 @@ INSERT INTO allergen (name) VALUES ('Fish');
 INSERT INTO allergen (name) VALUES ('Shellfish');
 INSERT INTO allergen (name) VALUES ('Eggs');
 
-
 -- Insertion dans la table Categorie
 ALTER TABLE categorie ALTER COLUMN id INT AUTO_INCREMENT;
 INSERT INTO categorie (name) VALUES ('Vegan');
@@ -44,7 +43,6 @@ INSERT INTO user (firstname, lastname) VALUES ('Laura', 'Jones');
 INSERT INTO user (firstname, lastname) VALUES ('Robert', 'Garcia');
 INSERT INTO user (firstname, lastname) VALUES ('Maria', 'Martinez');
 INSERT INTO user (firstname, lastname) VALUES ('James', 'Anderson');
-
 
 -- Insertion dans la table Dish
 ALTER TABLE dish ALTER COLUMN id INT AUTO_INCREMENT;
