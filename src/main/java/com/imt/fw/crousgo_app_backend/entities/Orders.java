@@ -16,7 +16,7 @@ public class Orders {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private Long users_id;
+    private Users users_id;
 
     @OneToMany
     @JoinTable(
@@ -33,11 +33,11 @@ public class Orders {
         return id;
     }
 
-    public Long getusers_id() {
+    public Users getusers_id() {
         return users_id;
     }
 
-    public void setusers_id(Long users_id) {
+    public void setusers_id(Users users_id) {
         this.users_id = users_id;
     }
 
