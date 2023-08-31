@@ -16,7 +16,7 @@ public class Dish {
     @Column(name = "description")
     private String description;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "dish_allergen",
             joinColumns = @JoinColumn(name = "dish_id"),
@@ -24,7 +24,7 @@ public class Dish {
     )
     private List<Allergen> allergens;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "dish_categorie",
             joinColumns = @JoinColumn(name = "dish_id"),
