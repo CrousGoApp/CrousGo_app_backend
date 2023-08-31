@@ -35,6 +35,9 @@ public class Dish {
     @Column(name = "picture")
     private String picture;
 
+    @Column(name = "price")
+    private int price;
+
     public Integer getId() {
         return id;
     }
@@ -77,5 +80,13 @@ public class Dish {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

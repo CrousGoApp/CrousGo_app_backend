@@ -24,6 +24,9 @@ public class Users {
     @Column(name= "password")
     private String password;
 
+    @Column(name= "wallet")
+    private int wallet;
+
     public Long getId() {
         return id;
     }
@@ -58,5 +61,13 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
     }
 }
