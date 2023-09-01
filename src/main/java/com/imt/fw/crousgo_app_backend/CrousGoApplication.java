@@ -10,13 +10,30 @@ import org.springframework.context.annotation.Bean;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class CrousGoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrousGoApplication.class, args);
+		final long startTime = System.currentTimeMillis();
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 		System.out.println("CrousGo Application Started");
+
+        executor.scheduleAtFixedRate(() -> {
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - startTime;
+
+            long seconds = (elapsedTime / 1000) % 60;
+            long minutes = (elapsedTime / (1000 * 60)) % 60;
+            long hours = (elapsedTime / (1000 * 60 * 60)) % 24;
+
+            System.out.println(String.format("UpTime: %02d:%02d:%02d", hours, minutes, seconds));
+        }, 0, 1, TimeUnit.SECONDS); // Mise à jour chaque seconde
+    
 	}
 
 	@Bean
@@ -129,7 +146,7 @@ public class CrousGoApplication {
 			categories1.add(categorieRepository.findByName("Salad"));
 			dish1.setCategorie(categories1);
 			dishRepository.save(dish1);
-
+			/*
 			Dish dish2 = new Dish();
 			dish2.setName("Burger");
 			dish2.setDescription("Juicy beef burger");
@@ -143,7 +160,7 @@ public class CrousGoApplication {
 			categories2.add(categorieRepository.findByName("Burger"));
 			dish2.setCategorie(categories2);
 			dishRepository.save(dish2);
-
+			
 			Dish dish3 = new Dish();
 			dish3.setName("Pasta");
 			dish3.setDescription("Pasta with tomato sauce");
@@ -245,6 +262,8 @@ public class CrousGoApplication {
 			categories9.add(categorieRepository.findByName("Rice"));
 			dish9.setCategorie(categories9);
 			dishRepository.save(dish9);
+			*/
 		};
 	}
+	
 }
