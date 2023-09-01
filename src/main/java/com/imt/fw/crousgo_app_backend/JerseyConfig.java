@@ -1,5 +1,6 @@
 package com.imt.fw.crousgo_app_backend;
 
+import com.imt.fw.crousgo_app_backend.config.CORSFilter;
 import com.imt.fw.crousgo_app_backend.resources.*;
 import jakarta.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
