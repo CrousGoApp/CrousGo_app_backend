@@ -146,7 +146,7 @@ public class CrousGoApplication {
 			categories1.add(categorieRepository.findByName("Salad"));
 			dish1.setCategorie(categories1);
 			dishRepository.save(dish1);
-			/*
+			
 			Dish dish2 = new Dish();
 			dish2.setName("Burger");
 			dish2.setDescription("Juicy beef burger");
@@ -160,7 +160,7 @@ public class CrousGoApplication {
 			categories2.add(categorieRepository.findByName("Burger"));
 			dish2.setCategorie(categories2);
 			dishRepository.save(dish2);
-			
+		
 			Dish dish3 = new Dish();
 			dish3.setName("Pasta");
 			dish3.setDescription("Pasta with tomato sauce");
@@ -262,7 +262,7 @@ public class CrousGoApplication {
 			categories9.add(categorieRepository.findByName("Rice"));
 			dish9.setCategorie(categories9);
 			dishRepository.save(dish9);
-			*/
+		
 		};
 	}
 	

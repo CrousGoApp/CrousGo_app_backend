@@ -16,15 +16,16 @@ public class Dish {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "dish_allergen",
             joinColumns = @JoinColumn(name = "dish_id"),
             inverseJoinColumns = @JoinColumn(name = "allergen_id")
     )
+
     private List<Allergen> allergens;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "dish_categorie",
             joinColumns = @JoinColumn(name = "dish_id"),
