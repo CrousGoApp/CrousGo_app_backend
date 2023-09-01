@@ -1,6 +1,5 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
-import com.imt.fw.crousgo_app_backend.entities.Categorie;
 import com.imt.fw.crousgo_app_backend.entities.Classroom;
 import com.imt.fw.crousgo_app_backend.repositories.ClassroomRepository;
 import jakarta.validation.constraints.NotNull;

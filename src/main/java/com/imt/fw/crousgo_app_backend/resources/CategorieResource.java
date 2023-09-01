@@ -1,6 +1,5 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
-import com.imt.fw.crousgo_app_backend.entities.Allergen;
 import com.imt.fw.crousgo_app_backend.entities.Categorie;
 import com.imt.fw.crousgo_app_backend.repositories.CategorieRepository;
 import jakarta.validation.constraints.NotNull;
