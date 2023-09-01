@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @Path("allergens")
+
 public class AllergenResource {
 
     @Autowired

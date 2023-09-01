@@ -17,6 +17,7 @@ public class JerseyConfig extends ResourceConfig {
         register(ClassroomResource.class);
         register(DishResource.class);
         register(OrderResource.class);
+        register(CORSFilter.class);
 
     }
 }
