@@ -25,4 +25,28 @@ public class ClassroomResource {
     @Consumes("application/json")
     public void createClassroom(@NotNull @RequestBody Classroom classroom){
         classroomRepository.save(classroom);
-}}
+
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(value = "application/json")
+    public void deleteClassroom(@PathParam("id") Long id){
+        classroomRepository.deleteById(id);
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes("application/json")
+    public void updateClassroom(@PathParam("id") Long id, @NotNull @RequestBody Classroom classroom){
+        classroomRepository.save(classroom);
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(value = "application/json")
+    public Classroom getClassroomById(@PathParam("id") Long id){
+        return classroomRepository.findById(id).orElse(null);
+    }
+
+}

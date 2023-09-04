@@ -20,4 +20,3 @@ public class CORSFilter implements ContainerResponseFilter {
         responseContext.getHeaders().add("Access-Control-Allow-Methods", "POST, PUT, DELETE, OPTIONS, HEAD");
     }
 }
-

@@ -26,4 +26,24 @@ public class DishResource {
     public void createDish(@NotNull @RequestBody Dish dish){
         dishRepository.save(dish);
     }
+
+    @DELETE
+    @Path("/{id}")
+    public void deleteDish(@PathParam("id") Long id){
+        dishRepository.deleteById(id);
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes("application/json")
+    public void updateDish(@PathParam("id") Long id, @NotNull @RequestBody Dish dish){
+        dishRepository.save(dish);
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(value = "application/json")
+    public Dish getDishById(@PathParam("id") Long id){
+        return dishRepository.findById(id).orElse(null);
+    }
 }

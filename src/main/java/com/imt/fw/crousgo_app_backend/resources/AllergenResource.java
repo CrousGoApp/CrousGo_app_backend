@@ -27,4 +27,26 @@ public class AllergenResource {
         allergenRepository.save(allergen);
     }
 
+    @DELETE
+    @Path("/{id}")
+    public void deleteAllergen(@PathParam("id") Long id){
+        allergenRepository.deleteById(id);
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes("application/json")
+    public void updateAllergen(@PathParam("id") Long id, @NotNull @RequestBody Allergen allergen){
+        allergenRepository.save(allergen);
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(value = "application/json")
+    public Allergen getAllergenById(@PathParam("id") Long id){
+        return allergenRepository.findById(id).orElse(null);
+    }
+
+
+
 }

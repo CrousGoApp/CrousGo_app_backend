@@ -1,3 +1,4 @@
+
 package com.imt.fw.crousgo_app_backend.config;
 
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http){
         try {
             http
+                    .csrf().disable()
                     .authorizeHttpRequests(authorizeHttpRequests ->
                             authorizeHttpRequests
                                     .anyRequest().permitAll()
