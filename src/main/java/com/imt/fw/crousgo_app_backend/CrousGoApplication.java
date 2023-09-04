@@ -33,6 +33,7 @@ public class CrousGoApplication {
 
             System.out.println(String.format("UpTime: %02d:%02d:%02d", hours, minutes, seconds));
         }, 0, 1, TimeUnit.SECONDS); // Mise à jour chaque seconde
+
     
 	}
 

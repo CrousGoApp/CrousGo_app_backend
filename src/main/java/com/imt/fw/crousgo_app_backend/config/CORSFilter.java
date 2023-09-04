@@ -1,4 +1,4 @@
-package com.imt.fw.crousgo_app_backend.resources;
+package com.imt.fw.crousgo_app_backend.config;
 
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerResponseContext;
@@ -15,7 +15,7 @@ public class CORSFilter implements ContainerResponseFilter {
     
             throws IOException {
          System.out.println("CORSFilter called");       
-        responseContext.getHeaders().add("Access-Control-Allow-Origin", "*");  // Allow all origins for simplicity
+        responseContext.getHeaders().add("Access-Control-Allow-Origin", "*"); 
         responseContext.getHeaders().add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         responseContext.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
     }
