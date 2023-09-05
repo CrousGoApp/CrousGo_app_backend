@@ -4,21 +4,20 @@ import com.imt.fw.crousgo_app_backend.entities.Users;
 import com.imt.fw.crousgo_app_backend.repositories.UserRepository;
 
 import jakarta.annotation.security.PermitAll;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
 @Path("users")
 public class UserResource {
 
-    @Autowired
+    @Inject
     private UserRepository userRepository;
 
     @GET
-    @Produces(value = "application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Users> getUser() {
         return userRepository.findAll();
     }
@@ -26,12 +25,12 @@ public class UserResource {
     // Get user by id
     @GET
     @Path("{id}")
-    @Produces(value = "application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Users getUserById(@PathParam("id") Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    // Delete user by id    
+    // Delete user by id
     @DELETE
     @Path("{id}")
     @PermitAll
@@ -42,16 +41,15 @@ public class UserResource {
     // Update user by id
     @PUT
     @Path("{id}")
-    @Produces(value = "application/json")
-    public void updateUserById(@PathParam("id") Long id, @RequestBody Users user) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateUserById(@PathParam("id") Long id, Users user) {
         userRepository.save(user);
     }
 
     // Create user
     @POST
-    @Produces(value = "application/json")
-    public void createUser(@RequestBody Users user){
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createUser(Users user) {
         userRepository.save(user);
     }
-
 }

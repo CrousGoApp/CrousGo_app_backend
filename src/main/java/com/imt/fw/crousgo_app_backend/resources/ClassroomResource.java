@@ -2,51 +2,49 @@ package com.imt.fw.crousgo_app_backend.resources;
 
 import com.imt.fw.crousgo_app_backend.entities.Classroom;
 import com.imt.fw.crousgo_app_backend.repositories.ClassroomRepository;
-import jakarta.validation.constraints.NotNull;
+
 import jakarta.ws.rs.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.validation.constraints.NotNull;
+import jakarta.inject.Inject;
 
 import java.util.List;
 
 @Path("classrooms")
 public class ClassroomResource {
 
-    @Autowired
+    @Inject
     private ClassroomRepository classroomRepository;
 
     @GET
-    @Produces(value = "application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Classroom> getClassroom() {
         return classroomRepository.findAll();
     }
 
     @POST
-    @Consumes("application/json")
-    public void createClassroom(@NotNull @RequestBody Classroom classroom){
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createClassroom(@NotNull Classroom classroom){
         classroomRepository.save(classroom);
-
     }
 
     @DELETE
-    @Path("/{id}")
-    @Produces(value = "application/json")
+    @Path("{id}")
     public void deleteClassroom(@PathParam("id") Long id){
         classroomRepository.deleteById(id);
     }
 
     @PUT
-    @Path("/{id}")
-    @Consumes("application/json")
-    public void updateClassroom(@PathParam("id") Long id, @NotNull @RequestBody Classroom classroom){
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateClassroom(@PathParam("id") Long id, Classroom classroom){
         classroomRepository.save(classroom);
     }
 
     @GET
-    @Path("/{id}")
-    @Produces(value = "application/json")
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Classroom getClassroomById(@PathParam("id") Long id){
         return classroomRepository.findById(id).orElse(null);
     }
-
 }
