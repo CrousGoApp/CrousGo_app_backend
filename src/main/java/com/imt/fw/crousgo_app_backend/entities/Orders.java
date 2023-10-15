@@ -10,13 +10,8 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
-    @JoinTable(
-            name = "order_user",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Users users_id;
+    @Column(name = "user")
+    private String user_mail;
 
     @OneToMany
     @JoinTable(
@@ -26,19 +21,24 @@ public class Orders {
     )
     private List<Dish> dish;
 
-    @Column(name = "classroom")
-    private Long classroom;
+    @OneToOne
+    @JoinTable(
+            name = "order_classroom",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "classroom_id")
+    )
+    private Classroom classroom;
 
     public Long getId() {
         return id;
     }
 
-    public Users getusers_id() {
-        return users_id;
+    public String getusers_id() {
+        return user_mail;
     }
 
     public void setusers_id(Users users_id) {
-        this.users_id = users_id;
+        this.user_mail = user_mail;
     }
 
     public List<Dish> getDish() {
@@ -49,11 +49,11 @@ public class Orders {
         this.dish = dish;
     }
 
-    public Long getClassroom() {
+    public Classroom getClassroom() {
         return classroom;
     }
 
-    public void setClassroom(Long classroom) {
+    public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
     }
 }

@@ -65,4 +65,18 @@ public class OrderResource {
             return Response.status(500).entity("Error while updating order").build();
         }
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addOrder(Orders order) {
+        try {
+            // Vous pouvez ajouter ici des validations, par exemple, vérifier si l'ordre est correct avant de l'ajouter à la base de données.
+            // Si vous utilisez des annotations de validation, assurez-vous qu'elles sont définies dans la classe Orders.
+
+            Orders savedOrder = orderRepository.save(order);
+            return Response.status(201).entity(savedOrder).build();
+        } catch (Exception e) {
+            return Response.status(500).entity("Error while adding order").build();
+        }
+    }
 }
