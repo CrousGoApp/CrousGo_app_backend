@@ -1,17 +1,37 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
-import com.imt.fw.crousgo_app_backend.entities.Orders;
-import com.imt.fw.crousgo_app_backend.repositories.OrderRepository;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.inject.Inject;
-
 import java.util.List;
 import java.util.Optional;
 
+import com.imt.fw.crousgo_app_backend.dto.OrderDTO;
+import com.imt.fw.crousgo_app_backend.entities.Classroom;
+import com.imt.fw.crousgo_app_backend.entities.Dish;
+import com.imt.fw.crousgo_app_backend.entities.Orders;
+import com.imt.fw.crousgo_app_backend.repositories.ClassroomRepository;
+import com.imt.fw.crousgo_app_backend.repositories.DishRepository;
+import com.imt.fw.crousgo_app_backend.repositories.OrderRepository;
+
+import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+
+
 @Path("orders")
 public class OrderResource {
+    @Inject
+    private DishRepository dishRepository;
+
+    @Inject
+    private ClassroomRepository classroomRepository;
 
     @Inject
     private OrderRepository orderRepository;
@@ -68,15 +88,37 @@ public class OrderResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addOrder(Orders order) {
+    public Response addOrder(OrderDTO orderDTO) {
         try {
-            // Vous pouvez ajouter ici des validations, par exemple, vérifier si l'ordre est correct avant de l'ajouter à la base de données.
-            // Si vous utilisez des annotations de validation, assurez-vous qu'elles sont définies dans la classe Orders.
-
+            
+            Orders order = convertToEntity(orderDTO);
+            
             Orders savedOrder = orderRepository.save(order);
             return Response.status(201).entity(savedOrder).build();
         } catch (Exception e) {
+            System.out.println(e);
             return Response.status(500).entity("Error while adding order").build();
         }
     }
+
+    private Orders convertToEntity(OrderDTO orderDTO) {
+    Orders order = new Orders();
+    
+    order.setUser_mail(orderDTO.getUser_mail());
+        
+    // Fetch dishes from database using dishIds and set to order
+    List<Dish> dishes = dishRepository.findAllById(orderDTO.getDishIds());
+    System.out.println(dishes);
+    order.setDish(dishes);
+
+    // Fetch classroom from database using classroomId and set to order
+    Classroom classroom = classroomRepository.findById(orderDTO.getClassroomId()).orElse(null);
+    order.setClassroom(classroom);
+    System.out.println(order);
+
+    return order;
+
+    }
+
+
 }

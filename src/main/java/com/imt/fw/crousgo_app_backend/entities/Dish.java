@@ -8,7 +8,7 @@ import java.util.List;
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -39,7 +39,7 @@ public class Dish {
     @Column(name = "price")
     private int price;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

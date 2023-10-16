@@ -10,7 +10,7 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "user")
+    @Column(name = "user_email")
     private String user_mail;
 
     @OneToMany
@@ -33,12 +33,12 @@ public class Orders {
         return id;
     }
 
-    public String getusers_id() {
+    public String getUser_mail() {
         return user_mail;
     }
 
-    public void setusers_id(Users users_id) {
-        this.user_mail = user_mail;
+    public void setUser_mail(String users_id) {
+        this.user_mail = users_id;
     }
 
     public List<Dish> getDish() {
