@@ -21,6 +21,8 @@ public class SecurityConfig {
                                     .anyRequest().permitAll()
                         
                     );
+                    http.headers().frameOptions().disable();
+                    
                     
             return http.build();
         } catch (Exception e) {
