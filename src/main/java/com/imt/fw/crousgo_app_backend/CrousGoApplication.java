@@ -151,7 +151,7 @@ public class CrousGoApplication {
 			Dish dish2 = new Dish();
 			dish2.setName("Burger");
 			dish2.setDescription("Juicy beef burger");
-			dish2.setPicture("burger.jpg");
+			dish2.setPicture("burger.png");
 			dish2.setPrice(5);
 			List<Allergen> allergens2 = new ArrayList<>();
 			allergens2.add(allergenRepository.findByName("Gluten")); // Fetch allergen by name from repository
@@ -165,7 +165,7 @@ public class CrousGoApplication {
 			Dish dish3 = new Dish();
 			dish3.setName("Pasta");
 			dish3.setDescription("Pasta with tomato sauce");
-			dish3.setPicture("pasta.jpg");
+			dish3.setPicture("pasta.jpeg");
 			dish3.setPrice(5);
 			List<Allergen> allergens3 = new ArrayList<>();
 			allergens3.add(allergenRepository.findByName("Gluten")); // Fetch allergen by name from repository
