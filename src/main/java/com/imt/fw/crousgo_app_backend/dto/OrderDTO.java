@@ -7,8 +7,6 @@ public class OrderDTO {
     private List<Long> dishIds;
     private Long classroomId;
 
-    // Getters, setters, and any necessary validation logic
-    // ...
 
     public String getUser_mail() {
         return user_mail;

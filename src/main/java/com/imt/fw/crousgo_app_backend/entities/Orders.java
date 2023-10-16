@@ -13,7 +13,7 @@ public class Orders {
     @Column(name = "user_email")
     private String user_mail;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(
             name = "order_dish",
             joinColumns = @JoinColumn(name = "order_id"),
@@ -21,7 +21,7 @@ public class Orders {
     )
     private List<Dish> dish;
 
-    @OneToOne
+    @ManyToOne
     @JoinTable(
             name = "order_classroom",
             joinColumns = @JoinColumn(name = "order_id"),
