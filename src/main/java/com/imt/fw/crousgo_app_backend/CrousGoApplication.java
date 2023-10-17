@@ -91,40 +91,40 @@ public class CrousGoApplication {
 			Users user1 = new Users();
 			user1.setFirstname("John");
 			user1.setLastname("Doe");
-			user1.setLogin("login");
-			user1.setPassword("password");
+			user1.setemail("email");
+			
 			user1.setWallet(100);
 			userRepository.save(user1);
 
 			Users user2 = new Users();
 			user2.setFirstname("Jane");
 			user2.setLastname("Doe");
-			user2.setLogin("login");
-			user2.setPassword("password");
+			user2.setemail("email");
+			
 			user2.setWallet(100);
 			userRepository.save(user2);
 
 			Users user3 = new Users();
 			user3.setFirstname("Emily");
 			user3.setLastname("Smith");
-			user3.setLogin("login");
-			user3.setPassword("password");
+			user3.setemail("email");
+			
 			user3.setWallet(100);
 			userRepository.save(user3);
 
 			Users user4 = new Users();
 			user4.setFirstname("Michael");
 			user4.setLastname("Johnson");
-			user4.setLogin("login");
-			user4.setPassword("password");
+			user4.setemail("email");
+			
 			user4.setWallet(100);
 			userRepository.save(user4);
 
 			Users user5 = new Users();
 			user5.setFirstname("Sarah");
 			user5.setLastname("Williams");
-			user5.setLogin("login");
-			user5.setPassword("password");
+			user5.setemail("email");
+			
 			user5.setWallet(100);
 			userRepository.save(user5);
 		};

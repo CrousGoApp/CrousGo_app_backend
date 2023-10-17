@@ -18,11 +18,9 @@ public class Users {
     @Column(name= "lastname")
     private String lastname;
 
-    @Column(name= "login")
-    private String login;
+    @Column(name= "email")
+    private String email;
 
-    @Column(name= "password")
-    private String password;
 
     @Column(name= "wallet")
     private int wallet;
@@ -47,20 +45,12 @@ public class Users {
         this.lastname = lastname;
     }
 
-    public String getLogin() {
-        return login;
+    public String getemail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setemail(String email) {
+        this.email = email;
     }
 
     public int getWallet() {
