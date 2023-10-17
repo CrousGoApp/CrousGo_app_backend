@@ -108,13 +108,11 @@ public class OrderResource {
         
     // Fetch dishes from database using dishIds and set to order
     List<Dish> dishes = dishRepository.findAllById(orderDTO.getDishIds());
-    System.out.println(dishes);
     order.setDish(dishes);
 
     // Fetch classroom from database using classroomId and set to order
     Classroom classroom = classroomRepository.findById(orderDTO.getClassroomId()).orElse(null);
     order.setClassroom(classroom);
-    System.out.println(order);
 
     return order;
 
