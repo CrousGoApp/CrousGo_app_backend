@@ -6,21 +6,29 @@ import org.springframework.web.bind.annotation.*;
 import com.imt.fw.crousgo_app_backend.entities.OrderDish;
 import com.imt.fw.crousgo_app_backend.repositories.OrderDishRepository;
 
-@RestController
-@RequestMapping("/api/orderDishes")
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.validation.constraints.NotNull;
+import jakarta.inject.Inject;
+
+
+@Path("/orderDishes")
 public class OrderDishResource {
 
     @Autowired
     private OrderDishRepository orderDishRepository;
 
     // Endpoint pour obtenir tous les OrderDish
-    @GetMapping
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<OrderDish> getAllOrderDishes() {
         return orderDishRepository.findAll();
     }
 
     // Endpoint pour créer un nouvel OrderDish
-    @PostMapping
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public OrderDish createOrderDish(@RequestBody OrderDish orderDish) {
         return orderDishRepository.save(orderDish);
     }

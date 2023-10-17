@@ -1,5 +1,7 @@
 package com.imt.fw.crousgo_app_backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 
@@ -13,6 +15,7 @@ public class OrderDish {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private Orders order;
 
     @ManyToOne
