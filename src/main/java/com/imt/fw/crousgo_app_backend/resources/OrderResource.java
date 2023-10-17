@@ -1,11 +1,14 @@
 package com.imt.fw.crousgo_app_backend.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.imt.fw.crousgo_app_backend.dto.OrderDTO;
+import com.imt.fw.crousgo_app_backend.dto.OrderDTO.DishOrder;
 import com.imt.fw.crousgo_app_backend.entities.Classroom;
 import com.imt.fw.crousgo_app_backend.entities.Dish;
+import com.imt.fw.crousgo_app_backend.entities.OrderDish;
 import com.imt.fw.crousgo_app_backend.entities.Orders;
 import com.imt.fw.crousgo_app_backend.repositories.ClassroomRepository;
 import com.imt.fw.crousgo_app_backend.repositories.DishRepository;
@@ -102,21 +105,34 @@ public class OrderResource {
     }
 
     private Orders convertToEntity(OrderDTO orderDTO) {
-    Orders order = new Orders();
-    
-    order.setUser_mail(orderDTO.getUser_mail());
+        Orders order = new Orders();
         
-    // Fetch dishes from database using dishIds and set to order
-    List<Dish> dishes = dishRepository.findAllById(orderDTO.getDishIds());
-    order.setDish(dishes);
+        order.setUser_mail(orderDTO.getUser_mail());
+            
+        // Fetch dishes from database using dishIds from the DTO
+        List<DishOrder> dishOrders = orderDTO.getDishes();
+        List<OrderDish> orderDishes = new ArrayList<>();
 
-    // Fetch classroom from database using classroomId and set to order
-    Classroom classroom = classroomRepository.findById(orderDTO.getClassroomId()).orElse(null);
-    order.setClassroom(classroom);
+        for (DishOrder dishOrder : dishOrders) {
+            Dish dish = dishRepository.findById(dishOrder.getId()).orElse(null);
+            if (dish != null) {
+                OrderDish orderDish = new OrderDish();
+                orderDish.setOrder(order);
+                orderDish.setDish(dish);
+                orderDish.setQuantity(dishOrder.getQuantity());
+                orderDishes.add(orderDish);
+            }
+        }
 
-    return order;
-
+        order.setOrderDishes(orderDishes);
+        
+        // Fetch classroom from database using classroomId and set to order
+        Classroom classroom = classroomRepository.findById(orderDTO.getClassroomId()).orElse(null);
+        order.setClassroom(classroom);
+        
+        return order;
     }
+
 
 
 }

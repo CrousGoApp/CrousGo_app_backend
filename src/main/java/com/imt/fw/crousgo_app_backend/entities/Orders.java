@@ -13,20 +13,12 @@ public class Orders {
     @Column(name = "user_email")
     private String user_mail;
 
-    @ManyToMany
-    @JoinTable(
-            name = "order_dish",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "dish_id")
-    )
-    private List<Dish> dish;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderDish> orderDishes;
+
 
     @ManyToOne
-    @JoinTable(
-            name = "order_classroom",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "classroom_id")
-    )
+    @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
     public Long getId() {
@@ -41,12 +33,12 @@ public class Orders {
         this.user_mail = users_id;
     }
 
-    public List<Dish> getDish() {
-        return dish;
+    public List<OrderDish> getOrderDishes() {
+        return orderDishes;
     }
 
-    public void setDish(List<Dish> dish) {
-        this.dish = dish;
+    public void setOrderDishes(List<OrderDish> orderDishes) {
+        this.orderDishes = orderDishes;
     }
 
     public Classroom getClassroom() {

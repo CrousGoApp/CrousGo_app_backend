@@ -4,9 +4,29 @@ import java.util.List;
 
 public class OrderDTO {
     private String user_mail;
-    private List<Long> dishIds;
+    private List<DishOrder> dishes; 
     private Long classroomId;
 
+    public static class DishOrder {
+        private Long id;
+        private int quantity;
+
+        public Long getId(){
+            return id;
+        }
+
+        public void setId(Long id){
+            this.id = id;
+        }
+
+        public int getQuantity(){
+            return quantity;
+        }
+
+        public void setQuantity(int quantity){
+            this.quantity = quantity;
+        }
+    }
 
     public String getUser_mail() {
         return user_mail;
@@ -16,12 +36,12 @@ public class OrderDTO {
         this.user_mail = user_mail;
     }
 
-    public List<Long> getDishIds() {
-        return dishIds;
+    public List<DishOrder> getDishes() { 
+        return dishes;
     }
 
-    public void setDishIds(List<Long> dishIds) {
-        this.dishIds = dishIds;
+    public void setDishes(List<DishOrder> dishes) { 
+        this.dishes = dishes;
     }
 
     public Long getClassroomId() {
