@@ -78,4 +78,15 @@ public class UserResource {
             return Response.status(500).entity("Error while creating user").build();
         }
     }
+    @GET
+    @Path("email/{email}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserByEmail(@PathParam("email") String email) {
+        Optional<Users> user = userRepository.findByEmail(email);
+        if (user.isEmpty()) {
+            return Response.status(404).entity("User not found").build();
+        }
+        return Response.status(200).entity(user.get()).build();
+    }
+
 }

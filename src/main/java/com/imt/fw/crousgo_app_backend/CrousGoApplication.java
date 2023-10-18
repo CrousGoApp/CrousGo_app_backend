@@ -91,9 +91,9 @@ public class CrousGoApplication {
 			Users user1 = new Users();
 			user1.setFirstname("John");
 			user1.setLastname("Doe");
-			user1.setemail("email");
+			user1.setemail("test2@test.com");
 			
-			user1.setWallet(100);
+			user1.setWallet(300);
 			userRepository.save(user1);
 
 			Users user2 = new Users();
