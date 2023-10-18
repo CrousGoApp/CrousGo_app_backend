@@ -9,10 +9,12 @@ import com.imt.fw.crousgo_app_backend.dto.OrderDTO.DishOrder;
 import com.imt.fw.crousgo_app_backend.entities.Classroom;
 import com.imt.fw.crousgo_app_backend.entities.Dish;
 import com.imt.fw.crousgo_app_backend.entities.OrderDish;
+import com.imt.fw.crousgo_app_backend.entities.Users;
 import com.imt.fw.crousgo_app_backend.entities.Orders;
 import com.imt.fw.crousgo_app_backend.repositories.ClassroomRepository;
 import com.imt.fw.crousgo_app_backend.repositories.DishRepository;
 import com.imt.fw.crousgo_app_backend.repositories.OrderRepository;
+import com.imt.fw.crousgo_app_backend.repositories.UserRepository;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -38,6 +40,9 @@ public class OrderResource {
 
     @Inject
     private OrderRepository orderRepository;
+
+    @Inject
+    private UserRepository UserRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -96,12 +101,30 @@ public class OrderResource {
             
             Orders order = convertToEntity(orderDTO);
             
+            Users user = UserRepository.findByEmail(orderDTO.getUser_mail()).orElse(null);
+            int totalOrderCost = calculateTotalOrderCost(orderDTO);
+            if (user.getWallet() < totalOrderCost) {
+                return Response.status(400).entity("Solde insuffisant").build();
+            }
+            user.setWallet(user.getWallet() - totalOrderCost);
+            UserRepository.save(user);
             Orders savedOrder = orderRepository.save(order);
             return Response.status(201).entity(savedOrder).build();
         } catch (Exception e) {
             System.out.println(e);
             return Response.status(500).entity("Error while adding order").build();
         }
+    }
+
+    private int calculateTotalOrderCost(OrderDTO orderDTO) {
+        List<DishOrder> dishOrders = orderDTO.getDishes();
+        int somme = 0;
+        for (DishOrder dishOrder : dishOrders) {
+            Dish dish = dishRepository.findById(dishOrder.getId()).orElse(null);
+            somme += dish.getPrice() * dishOrder.getQuantity();       
+        }
+
+        return somme;
     }
 
     private Orders convertToEntity(OrderDTO orderDTO) {
