@@ -79,8 +79,6 @@ public class UserResource {
             return Response.status(500).entity("Error while updating user").build();
         }
     }
-    
-
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
