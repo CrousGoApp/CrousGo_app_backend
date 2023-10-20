@@ -1,4 +1,4 @@
--- Affiche les plats et leurs jointure
+-- Affiche les plats et leurs jointures
 SELECT 
     d.id, 
     d.name, 
@@ -14,7 +14,7 @@ LEFT JOIN dish_categorie dc ON d.id = dc.dish_id
 LEFT JOIN Categorie c ON dc.categorie_id = c.id
 GROUP BY d.id, d.name, d.description, d.picture, d.price;
 
--- Affiche les commandes et les jointure
+-- Affiche les commandes et les jointures
 SELECT o.id AS order_id, o.user_email, d.id AS dish_id, d.name AS dish_name, c.id AS classroom_id, c.name AS classroom_name
 FROM Orders o
 LEFT JOIN order_dish od ON o.id = od.order_id

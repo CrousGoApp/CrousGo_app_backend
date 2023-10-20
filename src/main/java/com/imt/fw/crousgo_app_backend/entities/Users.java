@@ -23,7 +23,7 @@ public class Users {
 
 
     @Column(name= "wallet")
-    private int wallet;
+    private int wallet = 0;
 
     public Long getId() {
         return id;

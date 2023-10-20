@@ -54,19 +54,33 @@ public class UserResource {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("email/{email}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUserById(@PathParam("id") Long id, Users user) {
-        if (userRepository.findById(id).isEmpty()) {
+    public Response UpdateUserByEmail(@PathParam("email") String email, Users user) {
+        Optional<Users> existingUserOpt = userRepository.findByEmail(email);
+        if (existingUserOpt.isEmpty()) {
             return Response.status(404).entity("User not found").build();
         }
+        Users existingUser = existingUserOpt.get();
+        
+        // Vérifiez que le montant saisi est positif
+        if (user.getWallet() <= 0) {
+            return Response.status(400).entity("Invalid amount. Please enter a positive value.").build();
+        }
+    
+        // Additionnez le solde saisi au solde actuel
+        int newWalletBalance = existingUser.getWallet() + user.getWallet();
+        existingUser.setWallet(newWalletBalance);
+    
         try {
-            userRepository.save(user);
+            userRepository.save(existingUser);
             return Response.status(200).entity("User updated").build();
         } catch (Exception e) {
             return Response.status(500).entity("Error while updating user").build();
         }
     }
+    
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
