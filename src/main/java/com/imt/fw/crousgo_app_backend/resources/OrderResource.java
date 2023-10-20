@@ -116,6 +116,7 @@ public class OrderResource {
         }
     }
 
+    
     private int calculateTotalOrderCost(OrderDTO orderDTO) {
         List<DishOrder> dishOrders = orderDTO.getDishes();
         int somme = 0;

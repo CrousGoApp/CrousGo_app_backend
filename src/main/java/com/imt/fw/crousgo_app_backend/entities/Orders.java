@@ -16,6 +16,8 @@ public class Orders {
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OrderDish> orderDishes;
 
+    @Column(name = "state")
+    private int state = 1;
 
     @ManyToOne
     @JoinColumn(name = "classroom_id")
@@ -47,5 +49,9 @@ public class Orders {
 
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
+    }
+
+    public int getState(){
+        return this.state;
     }
 }

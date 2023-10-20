@@ -30,5 +30,5 @@ public class OrderDishResource {
         return orderDishRepository.save(orderDish);
     }
 
-    // Ajoutez d'autres endpoints selon vos besoins (par exemple, pour la mise à jour, la suppression, etc.)
+    
 }
