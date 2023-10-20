@@ -19,9 +19,20 @@ public class Orders {
     @Column(name = "state")
     private int state = 1;
 
+    @Column(name = "total")
+    private int total = 0;
+
     @ManyToOne
     @JoinColumn(name = "classroom_id")
     private Classroom classroom;
+
+    public int getTotal(){
+        return this.total;
+    }
+
+    public void setTotal(int total){
+        this.total = total;
+    }
 
     public Long getId() {
         return id;
@@ -53,5 +64,9 @@ public class Orders {
 
     public int getState(){
         return this.state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

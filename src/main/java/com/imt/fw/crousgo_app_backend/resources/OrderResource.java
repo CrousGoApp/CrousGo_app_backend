@@ -82,17 +82,44 @@ public class OrderResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateOrder(@PathParam("id") Long id, Orders order){
-        if (orderRepository.findById(id).isEmpty()) {
+    public Response updateOrderState(@PathParam("id") Long id, Orders order){
+        Optional<Orders> existingOrderOpt = orderRepository.findById(id);
+        Orders existingOrder = existingOrderOpt.get();
+        Users user = UserRepository.findByEmail(existingOrder.getUser_mail()).orElse(null);
+        if (existingOrderOpt.isEmpty()) {
             return Response.status(404).entity("No order found").build();
         }
+        
+    
+        // Vérifiez si l'état actuel est 1 ou 2 et si le nouvel état est 5
+        if ((existingOrder.getState() == 1 || existingOrder.getState() == 2) && order.getState() == 5) {
+            // Annulez la commande et créditez le compte utilisateur
+            int orderAmount = existingOrder.getTotal();
+            
+            if (user == null) {
+                return Response.status(404).entity("User not found").build();
+            }
+            int currentWalletBalance = user.getWallet();
+            user.setWallet(currentWalletBalance + orderAmount); // Créditez le compte utilisateur
+    
+            // Mettez à jour l'état de la commande à annulé
+            existingOrder.setState(5);
+        } else {
+            // Mettez à jour les champs de la commande existante avec les valeurs de l'objet `order` fourni
+            existingOrder.setState(order.getState());
+        }
+    
         try {
-            orderRepository.save(order);
+            orderRepository.save(existingOrder);
+            UserRepository.save(user); // Sauvegardez l'utilisateur après avoir mis à jour son portefeuille
             return Response.status(200).entity("Order updated").build();
         } catch (Exception e) {
             return Response.status(500).entity("Error while updating order").build();
         }
     }
+    
+    
+    
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -108,6 +135,7 @@ public class OrderResource {
             }
             user.setWallet(user.getWallet() - totalOrderCost);
             UserRepository.save(user);
+            order.setTotal(totalOrderCost);
             Orders savedOrder = orderRepository.save(order);
             return Response.status(201).entity(savedOrder).build();
         } catch (Exception e) {
@@ -116,7 +144,7 @@ public class OrderResource {
         }
     }
 
-    
+
     private int calculateTotalOrderCost(OrderDTO orderDTO) {
         List<DishOrder> dishOrders = orderDTO.getDishes();
         int somme = 0;
@@ -124,7 +152,6 @@ public class OrderResource {
             Dish dish = dishRepository.findById(dishOrder.getId()).orElse(null);
             somme += dish.getPrice() * dishOrder.getQuantity();       
         }
-
         return somme;
     }
 
