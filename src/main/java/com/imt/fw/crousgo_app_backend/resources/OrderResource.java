@@ -91,9 +91,9 @@ public class OrderResource {
         }
         
     
-        // Vérifiez si l'état actuel est 1 ou 2 et si le nouvel état est 5
+        // Vérifie si l'état actuel est 1 ou 2 et si le nouvel état est 5
         if ((existingOrder.getState() == 1 || existingOrder.getState() == 2) && order.getState() == 5) {
-            // Annulez la commande et créditez le compte utilisateur
+            // Annule la commande et créditez le compte utilisateur
             int orderAmount = existingOrder.getTotal();
             
             if (user == null) {
@@ -102,16 +102,16 @@ public class OrderResource {
             int currentWalletBalance = user.getWallet();
             user.setWallet(currentWalletBalance + orderAmount); // Créditez le compte utilisateur
     
-            // Mettez à jour l'état de la commande à annulé
+            // Met à jour l'état de la commande à annulé
             existingOrder.setState(5);
         } else {
-            // Mettez à jour les champs de la commande existante avec les valeurs de l'objet `order` fourni
+            // Met à jour les champs de la commande existante avec les valeurs de l'objet `order` fourni
             existingOrder.setState(order.getState());
         }
     
         try {
             orderRepository.save(existingOrder);
-            UserRepository.save(user); // Sauvegardez l'utilisateur après avoir mis à jour son portefeuille
+            UserRepository.save(user); // Sauvegarde l'utilisateur après avoir mis à jour son portefeuille
             return Response.status(200).entity("Order updated").build();
         } catch (Exception e) {
             return Response.status(500).entity("Error while updating order").build();
