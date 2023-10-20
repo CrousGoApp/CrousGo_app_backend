@@ -41,4 +41,3 @@ mvn clean install
 - [Teo Vandroemme](https://github.com/TeoVandroemme)
 - [Louis Mercier](https://github.com/SaadyX)
 
-## Liens utiles
